@@ -145,7 +145,7 @@ define([
     var forceUp = this.options.get("forceUp");
     var enoughRoomAbove, enoughRoomBelow;
     if (forceDown) {
-	if (forceUp) {
+        if (forceUp) {
             throw new Error('You cannot specify both forceUp and forceDown.');
         }
         enoughRoomBelow = true;
