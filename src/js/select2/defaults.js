@@ -358,6 +358,8 @@ define([
       debug: false,
       dropdownAutoWidth: false,
       escapeMarkup: Utils.escapeMarkup,
+      forceUp: false,
+      forceDown: false,
       language: EnglishTranslation,
       matcher: matcher,
       minimumInputLength: 0,

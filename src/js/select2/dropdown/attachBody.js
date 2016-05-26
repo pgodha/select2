@@ -141,8 +141,22 @@ define([
       bottom: $window.scrollTop() + $window.height()
     };
 
-    var enoughRoomAbove = viewport.top < (offset.top - dropdown.height);
-    var enoughRoomBelow = viewport.bottom > (offset.bottom + dropdown.height);
+    var forceDown = this.options.get("forceDown");
+    var forceUp = this.options.get("forceUp");
+    var enoughRoomAbove, enoughRoomBelow;
+    if (forceDown) {
+        if (forceUp) {
+            throw new Error('You cannot specify both forceUp and forceDown.');
+        }
+        enoughRoomBelow = true;
+        enoughRoomAbove = false;
+    } else if (forceUp) {
+        enoughRoomBelow = false;
+        enoughRoomAbove = true;
+    } else {
+        enoughRoomAbove = viewport.top < (offset.top - dropdown.height);
+        enoughRoomBelow = viewport.bottom > (offset.bottom + dropdown.height);
+    }
 
     var css = {
       left: offset.left,
